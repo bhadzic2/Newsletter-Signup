@@ -15,14 +15,12 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  response.on("data", function(data){
-    const personalData=JSON.parse(data);
-    const firstName=req.body.name;
+
+    const firstName=req.body.fname;
     const lastName=req.body.lname;
     const email=req.body.email;
 
-  })
-
+    console.log(firstName,lastName,email);
 })
 
 app.listen(3000, function() {
