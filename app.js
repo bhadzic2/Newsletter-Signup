@@ -35,15 +35,26 @@ app.post("/", function(req, res) {
   const url="https://us14.api.mailchimp.com/3.0/lists/736289169b";
 const options={
   method: "POST",
-  auth:"belma:1cacccd30c9a83428f428f2f451e13d6-us14"
+  auth:"belma:3b979e36e3be066802a79b4ef0426159-us145"
 }
   const request=https.request(url, options, function(response) {
+
+if(response.statusCode===200){
+  res.sendFile(__dirname+"/success.html");
+
+}else{
+  res.sendFile(__dirname+"/failure.html");
+}
     response.on("data",function(data){
       console.log(JSON.parse(data));
     })
   })
-  request.write(jsonData);
+  //request.write(jsonData);
   request.end();
+})
+
+app.post("/failure",function(req,res){
+  res.redirect("/")
 })
 
 app.listen(3000, function() {
@@ -51,6 +62,6 @@ app.listen(3000, function() {
 });
 
 //API
-//1cacccd30c9a83428f428f2f451e13d6-us14
+//3b979e36e3be066802a79b4ef0426159-us14
 //listid
 //736289169b
