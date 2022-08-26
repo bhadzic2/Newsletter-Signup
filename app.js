@@ -49,7 +49,7 @@ if(response.statusCode===200){
       console.log(JSON.parse(data));
     })
   })
-  request.write(jsonData);
+  
   request.end();
 })
 
