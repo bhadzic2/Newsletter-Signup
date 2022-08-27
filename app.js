@@ -35,7 +35,7 @@ app.post("/", function(req, res) {
   const url="https://us14.api.mailchimp.com/3.0/lists/736289169b";
 const options={
   method: "POST",
-  auth:"belma:"+ "*|HIDDENAPI|*" + "-us14"
+  auth:"belma:hiddenapikey"
 }
   const request=https.request(url, options, function(response) {
 
@@ -49,7 +49,7 @@ if(response.statusCode===200){
       console.log(JSON.parse(data));
     })
   })
-  //request.write(jsonData);
+  request.write(jsonData);
   request.end();
 })
 
@@ -61,7 +61,5 @@ app.listen(process.env.PORT || 3000, function() {
   console.log("Server is running on port 3000.");
 });
 
-//API
-//3b979e36e3be066802a79b4ef0426159-us14
 //listid
 //736289169b
